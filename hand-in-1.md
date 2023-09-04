@@ -1,5 +1,5 @@
 # Credit Card Management System
-## SWAFE 2022 – Hand in 1
+## SWAFE 2023 – Hand in 1
 ## Introduction
 We have been contacted by a new client who runs a consultant business. Each of their consultants has a company credit card, and they want to keep track of expenses for each credit card. They have drafted with a requirement specification for a credit card management system.
 
@@ -101,19 +101,22 @@ Our Senior Vice Principal Software Engineering Architect has chosen Angular to b
 
 ## Formalia
 
-- Group size: 1-3 people
-- Deadline: 14th October 2022 (2022-10-14)
+- Group size: 1-4 people
+- Deadline: 16th October 2023 (2022-10-16)
 
 ## Submission
+
 Before submitting your solution, do the following:
+
 1. Delete the `node_modules` folder in the workspace root folder
-2. Add a file `participants.txt` and insert a new line for each participant with the AUID and name of each member separated by whitespace
+2. Add a file `participants.txt` and insert a new line for each participant with the student number and name of each member separated by whitespace
 3. Add `participants.txt` to the root folder of your application
-4. Archive and compress you application using one the following formats: `zip`, or `gzip/tar`. All other formats (`rar`, `7z`, etc.) will result in a request for resubmission
-5. The filename should be named `<AUID_PARTICIPANT_1>-<AUID_PARTICIPANT_2>-<AUID_PARTICIPANT_3>.<ARCHIVE_COMPRESS_FORMAT>` _Example: Alice with AUID `au01248` and Bob with AUID `au84210` creates a compressed archive named `au01248-au84210.tar.gz` and uploads it to Brightspace_
+4. Archive and compress you application using one the following formats: `zip`. All other formats (`rar`, `7z`, etc.) will result in a request for resubmission
+5. The filename should be named `Group<no>.zip` _Example: `Group01.zip`_
+6. And you are ready to upload it to Brightspace
 
 Example `participants.txt` contents:
 ```
-au01248 Alice Alison
-au84210 Bob Bobson
+202101234 Alice Alison
+202109876 Bob Bobson
 ```
