@@ -86,7 +86,7 @@ Our Senior Vice Principal Software Engineering Architect has chosen Angular to b
 - Modules
   - [ ] `AppModule`
     - [ ] `HomeComponent`
-    - [ ] `NavigationBarComponent`
+    - [x] `NavigationBarComponent`
   - [ ] `CreditCardModule`
     - [ ] `CreditCardListComponent`
   - [ ] `TransactionModule`

@@ -1,0 +1,27 @@
+<nav class="navbar">
+  <div class="container">
+    <!-- Home Link -->
+    <a class="nav-item" routerLink="/">Home</a>
+
+    <!-- About Link -->
+    <a class="nav-item" routerLink="/about">About</a>
+
+    <!-- Credit Card Dropdown -->
+    <div class="nav-dropdown">
+      <button class="nav-item nav-dropdown-toggle">Credit Cards</button>
+      <div class="nav-dropdown-menu">
+        <a class="nav-dropdown-item" routerLink="/creditcard">Overview</a>
+        <a class="nav-dropdown-item" routerLink="/creditcard/add">Add New</a>
+      </div>
+    </div>
+
+    <!-- Transaction Dropdown -->
+    <div class="nav-dropdown">
+      <button class="nav-item nav-dropdown-toggle">Transactions</button>
+      <div class="nav-dropdown-menu">
+        <a class="nav-dropdown-item" routerLink="/transaction">Transaction Screen</a>
+        <a class="nav-dropdown-item" routerLink="/transaction/add">Add New Transaction</a>
+      </div>
+    </div>
+  </div>
+</nav>
