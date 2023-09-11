@@ -56,9 +56,9 @@ The solution will provide the accounting department with an overview of use for 
 
 ## Design requirements 
 Futhermore, the solution must include the following:
-- [ ] The solution shall be implemented using the lastest major release of the Angular development platform<sup>(<a href="https://github.com/angular/angular/releases">GitHub</a>)</sup>
+- [X] The solution shall be implemented using the lastest major release of the Angular development platform<sup>(<a href="https://github.com/angular/angular/releases">GitHub</a>)</sup>
 - [ ] At least one module must be lazy-loaded<sup>(<a href="https://angular.io/guide/lazy-loading-ngmodules">docs</a>)</sup>
-- [ ] The application must implement at least one custom pipe <sup>(<a href="https://angular.io/guide/pipes#creating-pipes-for-custom-data-transformations">docs</a>)</sup> _Hint: Obvious candidates could be expiration date_
+- [X] The application must implement at least one custom pipe <sup>(<a href="https://angular.io/guide/pipes#creating-pipes-for-custom-data-transformations">docs</a>)</sup> _Hint: Obvious candidates could be expiration date_
 - [ ] At least one module must contain a routing module<sup>(<a href="https://angular.io/guide/lazy-loading-ngmodules">docs</a>)</sup>
 - [ ] At least one component must be standalone<sup>(<a href="https://angular.io/guide/standalone-components">docs</a>)</sup>
 - [ ] The application must be seeded with data from the server found @ `hand-in/credit-card-server`
@@ -96,8 +96,8 @@ Our Senior Vice Principal Software Engineering Architect has chosen Angular to b
   - [ ] `TransactionListComponent`
   - [ ] `CreditCardAddComponent`
 - Services
-  - [ ] `CreditCardService`
-  - [ ] `TransactionService`
+  - [x] `CreditCardService`
+  - [x] `TransactionService`
 
 ## Formalia
 
