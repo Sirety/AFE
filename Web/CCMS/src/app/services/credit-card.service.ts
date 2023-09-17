@@ -32,6 +32,7 @@ export class CreditCardService {
             'Super',
             {
               duration: 3000,
+              panelClass: 'SnackbarSuccess',
             }
           );
           return results;
@@ -51,6 +52,7 @@ export class CreditCardService {
           snackref.dismiss();
           this.snackBar.open(`Succesfully got card ${card_number}`, 'Close', {
             duration: 3000,
+            panelClass: 'SnackbarSuccess',
           });
           return card;
         }),
@@ -72,6 +74,7 @@ export class CreditCardService {
             'Close',
             {
               duration: 3000,
+              panelClass: 'SnackbarSuccess',
             }
           );
           return card;
@@ -96,6 +99,7 @@ export class CreditCardService {
             'Close',
             {
               duration: 3000,
+              panelClass: 'SnackbarSuccess',
             }
           );
           return card;
@@ -108,7 +112,11 @@ export class CreditCardService {
     if (error.status === 0) {
       this.snackBar.open(
         'A client-side or network error occurred. Handle it accordingly.',
-        'Close'
+        'Close',
+        {
+          duration: 5000,
+          panelClass: 'SnackbarError',
+        }
       );
       // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error);
@@ -116,7 +124,11 @@ export class CreditCardService {
     } else {
       this.snackBar.open(
         `Backend returned code ${error.status}, body was: ${error.error}`,
-        'Close'
+        'Close',
+        {
+          duration: 5000,
+          panelClass: 'SnackbarError',
+        }
       );
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong.

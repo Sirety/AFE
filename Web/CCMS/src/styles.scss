@@ -38,5 +38,23 @@ summary {
   /* Use the Roboto font for consistency */
 }
 
+.SnackbarSuccess {
+  font-size: large;
+  background-color: #43a047;
+  --mdc-snackbar-container-color: #43a047;
+}
+
+.SnackbarError {
+  background-color: #d32f2f;
+}
+
+.SnackbarWarning {
+  background-color: #ffa000;
+}
+
+.SnackbarInfo {
+  //darkblue
+  background-color: midnightblue
+}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
