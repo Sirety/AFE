@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, throwError } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable, catchError, map, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { CreditCard } from '../credit-card/model';
 
@@ -11,43 +12,112 @@ export class CreditCardService {
   rootUrl = environment.apiUrl;
   port = environment.port;
   http: HttpClient;
+  snackBar: MatSnackBar;
 
-  constructor(http: HttpClient) {
+  constructor(http: HttpClient, snackBar: MatSnackBar) {
     this.http = http;
+    this.snackBar = snackBar;
   }
 
   getCreditCards(): Observable<CreditCard[]> {
-    return this.http.get<CreditCard[]>(`${this.rootUrl + this.port}/cards/`);
+    let snackref = this.snackBar.open('Getting all cards', 'Close');
+    return this.http
+      .get<CreditCard[]>(`${this.rootUrl + this.port}/cards/`)
+      .pipe(
+        //map is closing loading snack bar and opening success snack bar
+        map((results) => {
+          snackref.dismiss();
+          this.snackBar.open(
+            `Succesfully got ${results.length} cards`,
+            'Super',
+            {
+              duration: 3000,
+            }
+          );
+          return results;
+        }),
+
+        catchError((e) => this.handleErrorCreditCardNumber(e, 0))
+      );
   }
 
   getCreditCard(card_number: number): Observable<CreditCard> {
-    return this.http.get<CreditCard>(
-      `${this.rootUrl + this.port}/cards/${card_number}`
-    );
+    let snackref = this.snackBar.open(`Getting card ${card_number}`, 'Close');
+    return this.http
+      .get<CreditCard>(`${this.rootUrl + this.port}/cards/${card_number}`)
+      .pipe(
+        //map is closing loading snack bar and opening success snack bar
+        map((card) => {
+          snackref.dismiss();
+          this.snackBar.open(`Succesfully got card ${card_number}`, 'Close', {
+            duration: 3000,
+          });
+          return card;
+        }),
+
+        catchError((e) => this.handleErrorCreditCardNumber(e, card_number))
+      );
   }
 
   deleteCard(card_number: number): Observable<CreditCard> {
+    let snackref = this.snackBar.open(`Deleting card ${card_number}`, 'Close');
     return this.http
       .delete<CreditCard>(`${this.rootUrl + this.port}/cards/${card_number}`)
       .pipe(
+        //map is closing loading snack bar and opening success snack bar
+        map((card) => {
+          snackref.dismiss();
+          this.snackBar.open(
+            `Succesfully deleted card ${card_number}`,
+            'Close',
+            {
+              duration: 3000,
+            }
+          );
+          return card;
+        }),
         catchError((e) => this.handleErrorCreditCardNumber(e, card_number))
       );
   }
 
   postCreditCard(card: CreditCard): Observable<CreditCard> {
+    let snackref = this.snackBar.open(
+      `Adding card ${card.card_number}`,
+      'Close'
+    );
     return this.http
       .post<CreditCard>(this.rootUrl + this.port + '/cards/', card)
       .pipe(
+        //map is closing loading snack bar and opening success snack bar
+        map((card) => {
+          snackref.dismiss();
+          this.snackBar.open(
+            `Succesfully added card ${card.card_number}`,
+            'Close',
+            {
+              duration: 3000,
+            }
+          );
+          return card;
+        }),
         catchError((e) => this.handleErrorCreditCardNumber(e, card.card_number))
       );
   }
 
   handleErrorCreditCardNumber(error: HttpErrorResponse, card_number: Number) {
     if (error.status === 0) {
+      this.snackBar.open(
+        'A client-side or network error occurred. Handle it accordingly.',
+        'Close'
+      );
       // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error);
       console.error('When adding card:', card_number);
     } else {
+      this.snackBar.open(
+        `Backend returned code ${error.status}, body was: ${error.error}`,
+        'Close'
+      );
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong.
       console.error(
