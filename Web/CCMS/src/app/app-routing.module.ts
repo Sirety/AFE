@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
+import { CreditCardAddComponent } from './credit-card-add/credit-card-add.component';
 import { CreditCardDetailsComponent } from './credit-card/credit-card-details/credit-card-details.component';
 import { CreditCardListComponent } from './credit-card/credit-card-list/credit-card-list.component';
-import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { TransactionAddComponent } from './transaction/transaction-add/transaction-add.component';
-import { TransactionOverviewComponent } from './transaction/transaction-overview/transaction-overview.component';
-import { TransactionModule } from './transaction/transaction.module';
+import { HomeComponent } from './transaction/home/home.component';
 
 const routes: Routes = [
   {
@@ -35,22 +33,16 @@ const routes: Routes = [
   {
     //form to add a new credit card
     path: 'creditcard/add',
-    component: CreditCardListComponent, //TODO: change to CreditCardAddComponent
+    component: CreditCardAddComponent,
+    title: 'Add Credit Card',
   },
   {
     //Transaction screen
     path: 'transaction',
-    component: TransactionModule,
-  },
-  {
-    //Transaction add screen
-    path: 'transaction/add',
-    component: TransactionAddComponent,
-  },
-  {
-    //Transaction overview screen
-    path: 'transaction/:id',
-    component: TransactionOverviewComponent,
+    loadChildren: () =>
+      import('./transaction/transaction.module').then(
+        (m) => m.TransactionModule
+      ),
   },
   {
     path: '**',

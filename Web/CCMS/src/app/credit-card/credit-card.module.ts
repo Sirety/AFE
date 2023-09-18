@@ -1,6 +1,7 @@
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { CreditCardAddComponent } from '../credit-card-add/credit-card-add.component';
 import { CreditCardDetailsComponent } from './credit-card-details/credit-card-details.component';
 import { CreditCardExpDateFormatPipe } from './credit-card-exp-date-format.pipe';
 import { CreditCardFormatPipe } from './credit-card-format.pipe';
@@ -15,6 +16,6 @@ import { CreditCardListComponent } from './credit-card-list/credit-card-list.com
     CreditCardFormatPipe,
     CreditCardExpDateFormatPipe,
   ],
-  imports: [CommonModule, AsyncPipe, RouterModule],
+  imports: [CommonModule, AsyncPipe, RouterModule, CreditCardAddComponent],
 })
 export class CreditCardModule {}
