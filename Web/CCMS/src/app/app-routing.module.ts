@@ -28,7 +28,7 @@ const routes: Routes = [
   },
   {
     //details of a specific credit card
-    path: 'creditcard/:card_number',
+    path: 'creditcard/details/:card_number',
     component: CreditCardDetailsComponent,
     title: 'Credit Card Details',
   },

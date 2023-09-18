@@ -3,7 +3,7 @@
   <p><strong>Card Holder:</strong> {{ creditCardData?.cardholder_name }}</p>
   <p><strong>Issuer:</strong> {{ creditCardData?.issuer }}</p>
   <!--- button for opening card details-->
-  <button mat-raised-button color="primary" routerLink="/creditcard/{{ creditCardData?.card_number }}">View Details</button>
+  <button mat-raised-button color="primary" routerLink="/creditcard/details/{{ creditCardData?.card_number }}">View Details</button>
 
 </div>
 <!-- Display a loading message while the Observable is being resolved -->
