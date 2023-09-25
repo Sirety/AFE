@@ -1,0 +1,19 @@
+.credit-card-form {
+  max-width: 500px;
+  margin: 0 auto;
+
+  .full-width-input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .half-width-input {
+    width: 48%; // Account for 2% margin
+    margin-right: 2%;
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
