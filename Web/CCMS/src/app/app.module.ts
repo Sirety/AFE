@@ -1,9 +1,10 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AboutComponent } from './about/about.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CreditCardModule } from './credit-card/credit-card.module';
 import { HomeComponent } from './home/home.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -16,7 +17,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     HomeComponent,
     AboutComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    CreditCardModule,
+    AppRoutingModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -1,1 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+/* Style for the container when credit card data is available */
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+  color: #4285f4;
+  /* Google's primary blue color */
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+p {
+  margin: 5px 0;
+}
+
+/* Style for the credit card details */
+strong {
+  font-weight: bold;
+}
+
+details {
+  margin-top: 10px;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Style for loading message */
+#loading {
+  margin-top: 20px;
+  font-style: italic;
+  color: #888;
+  font-family: 'Roboto', sans-serif;
+  /* Use the Roboto font for consistency */
+}

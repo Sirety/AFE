@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
+import { CreditCardDetailsComponent } from './credit-card/credit-card-details/credit-card-details.component';
 import { CreditCardListComponent } from './credit-card/credit-card-list/credit-card-list.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -20,12 +21,12 @@ const routes: Routes = [
   {
     //Overview of the credit cards in a list
     path: 'creditcard',
-    component: CreditCardListComponent, //TODO: change to CreditCardOverviewComponent
+    component: CreditCardListComponent,
   },
   {
     //details of a specific credit card
-    path: 'creditcard/:id',
-    component: CreditCardListComponent, // TODO: change to CreditCardDetailsComponent
+    path: 'creditcard/:card_number',
+    component: CreditCardDetailsComponent,
   },
   {
     //form to add a new credit card
