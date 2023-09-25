@@ -13,20 +13,24 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+    title: 'CCMS Home',
   },
   {
     path: 'about',
     component: AboutComponent,
+    title: 'About CCMS',
   },
   {
     //Overview of the credit cards in a list
     path: 'creditcard',
     component: CreditCardListComponent,
+    title: 'Credit Cards',
   },
   {
     //details of a specific credit card
     path: 'creditcard/:card_number',
     component: CreditCardDetailsComponent,
+    title: 'Credit Card Details',
   },
   {
     //form to add a new credit card
