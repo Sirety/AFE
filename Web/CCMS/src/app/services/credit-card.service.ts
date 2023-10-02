@@ -104,7 +104,9 @@ export class CreditCardService {
           );
           return card;
         }),
-        catchError((e) => this.handleErrorCreditCardNumber(e, card.card_number))
+        catchError((e) =>
+          this.handleErrorCreditCardNumber(e, Number(card.card_number))
+        )
       );
   }
 

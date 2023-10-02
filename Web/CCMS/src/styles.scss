@@ -1,7 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 /* Style for the container when credit card data is available */
+@import "~ag-grid-community/styles/ag-grid.css";
+@import "~ag-grid-community/styles/ag-theme-alpine.css";
 body {
   font-family: 'Roboto', sans-serif;
+}
+flex-container-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: space-around;
 }
 
 h1 {

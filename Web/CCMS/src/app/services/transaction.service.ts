@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable, catchError, map, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Transaction } from '../transaction/model';
 
@@ -20,6 +20,21 @@ export class TransactionService {
     return this.http.get<Transaction[]>(
       `${this.rootUrl + this.port}/transactions`
     );
+  }
+
+  getTransactionsByCreditCardId(
+    creditCardId: number
+  ): Observable<Transaction[]> {
+    return this.http
+      .get<Transaction[]>(`${this.rootUrl + this.port}/transactions`)
+      .pipe(
+        map((transactions) => {
+          return transactions.filter(
+            (transaction) =>
+              transaction.credit_card.card_number === creditCardId
+          );
+        })
+      );
   }
 
   postTransactions(transaction: Transaction): Observable<Transaction> {

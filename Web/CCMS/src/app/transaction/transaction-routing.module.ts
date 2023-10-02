@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: '',
     component: TransactionOverviewComponent,
-    title: 'trasaction',
+    title: 'Trasactions',
   },
   {
     path: 'add',
