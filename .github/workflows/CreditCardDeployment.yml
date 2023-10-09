@@ -22,7 +22,7 @@ jobs:
       - run: npm i
       - run: npm run test
 
-  deploy:
+  build_deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -42,20 +42,37 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: ./Web/CCMS
 
       - name: build to prod
         run: ng build --base-href=https://Sirety.github.io/AFE/
+        working-directory: ./Web/CCMS
 
       - name: deploy with james
         uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
           branch: Realease
-          folder: dist/ccms
+          folder: Web/CCMSdist/ccms
           clean: true
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Deploy with angular-cli-ghpages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          npm run ng -- deploy --base-href=/AFE/ --name="Sirety" --email="Olivervs111@gmail.com" --no-silent
+  deployAngular:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18"
+      
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Angular gh-pages
+        run: ng add angular-cli-ghpages@latest
+      
+      - name: Deploy to gh-pages
+        run: ng deploy --base-href=/AFE/
+      
