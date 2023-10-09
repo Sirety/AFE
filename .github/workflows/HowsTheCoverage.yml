@@ -14,13 +14,14 @@ jobs:
 
       - name: Run Jasmine tests
         run: npm run test -- --no-watch
+        working-directory: ./Web/CCMS
 
       - name: Coverage report
         uses: eleboys/test-coverage-report-action@v1.0.2
         id: report
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          path: coverage/coverage-summary.json
+          path: Web/CCMS/coverage/coverage-summary.json
           title: Karma Test Coverage
 
       - name: Print the output summary
