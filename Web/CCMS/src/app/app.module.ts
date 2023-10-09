@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { CreditCardModule } from './credit-card/credit-card.module';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { HomeComponent } from './transaction/home/home.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +18,7 @@ import { HomeComponent } from './transaction/home/home.component';
     PageNotFoundComponent,
     HomeComponent,
     AboutComponent,
+
   ],
   imports: [
     BrowserModule,

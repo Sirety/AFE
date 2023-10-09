@@ -5,7 +5,7 @@ import { CreditCardAddComponent } from './credit-card-add/credit-card-add.compon
 import { CreditCardDetailsComponent } from './credit-card/credit-card-details/credit-card-details.component';
 import { CreditCardListComponent } from './credit-card/credit-card-list/credit-card-list.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { HomeComponent } from './transaction/home/home.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
