@@ -18,7 +18,7 @@ jobs:
             pwd
 
       - name: Install Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
             node-version: "18"
 
@@ -37,7 +37,7 @@ jobs:
         id: report
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          path: Web/CCMS/coverage/coverage-summary.json
+          path: Web/CCMS/coverage/ccms/coverage-summary.json
           title: Karma Test Coverage
 
       - name: Print the output summary
