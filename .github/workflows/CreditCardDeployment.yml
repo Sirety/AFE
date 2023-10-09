@@ -6,40 +6,56 @@ on:
       - main
 
 jobs:
-    test: 
-        runs-on: ubuntu-latest
-        steps:
-        - name: Checkout
-          uses: actions/checkout@v2
-    
-        - name: Install Node.js
-          uses: actions/setup-node@v2
-          with:
-              node-version: '18'
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          path: "Web/CCMS"
 
-        - run: npm ci
-        - run: npm run test
-        
-    deploy:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v2
-      
-            - name: Install Node.js
-              uses: actions/setup-node@v2
-              with:
-                node-version: '18'
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18"
 
-            - name: Install dependencies
-              run: npm ci
-            
-            - name: Build
-              run: npm run build -- --prod --output-path docs
-            
-            - name: Deploy
-              uses: JamesIves/github-pages-deploy-action@4.1.0
-              with:
-                branch: gh-pages
-                folder: docs
+      - run: npm i
+      - run: npm run test
 
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          path: "Web/CCMS"
+
+      - name: See directory
+        run: |
+          ls -a
+          pwd
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: build to prod
+        run: ng build --base-href=https://Sirety.github.io/AFE/
+
+      - name: deploy with james
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          branch: Realease
+          folder: dist/ccms
+          clean: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy with angular-cli-ghpages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npm run ng -- deploy --base-href=/AFE/ --name="Sirety" --email="Olivervs111@gmail.com" --no-silent
