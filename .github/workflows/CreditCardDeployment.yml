@@ -44,7 +44,7 @@ jobs:
         working-directory: ./Web/CCMS
 
       - name: build to prod
-        run: ng build --base-href=https://Sirety.github.io/AFE/
+        run: npm run ng build --base-href=https://Sirety.github.io/AFE/
         working-directory: ./Web/CCMS
 
       - name: deploy with james
@@ -72,10 +72,10 @@ jobs:
         working-directory: ./Web/CCMS
 
       - name: Install Angular gh-pages
-        run: ng add angular-cli-ghpages@latest
+        run: npm run ng add angular-cli-ghpages@latest
         working-directory: ./Web/CCMS
       
       - name: Deploy to gh-pages
-        run: ng deploy --base-href=/AFE/
+        run: npm run ng deploy --base-href=/AFE/
         working-directory: ./Web/CCMS
       
