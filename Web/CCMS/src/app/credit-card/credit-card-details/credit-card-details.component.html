@@ -9,6 +9,8 @@
     <summary>CSC code:</summary>
     <p>{{ creditCardData.csc_code }}</p>
   </details>
+
+  <app-transaction-list [creditCardId]="creditCardData.card_number"></app-transaction-list>
 </div>
 
 <!-- Display a loading message while the Observable is being resolved -->
