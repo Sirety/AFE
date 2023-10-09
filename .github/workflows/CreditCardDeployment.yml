@@ -11,24 +11,23 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          path: "Web/CCMS"
 
       - name: Install Node.js
         uses: actions/setup-node@v2
         with:
           node-version: "18"
+        
 
       - run: npm i
+        working-directory: ./Web/CCMS
       - run: npm run test
+        working-directory: ./Web/CCMS 
 
   build_deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with:
-          path: "Web/CCMS"
 
       - name: See directory
         run: |
@@ -52,7 +51,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
           branch: Realease
-          folder: Web/CCMSdist/ccms
+          folder: Web/CCMS/dist/ccms
           clean: true
           token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -66,13 +65,17 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: "18"
+        
       
       - name: Install dependencies
         run: npm install
+        working-directory: ./Web/CCMS
 
       - name: Install Angular gh-pages
         run: ng add angular-cli-ghpages@latest
+        working-directory: ./Web/CCMS
       
       - name: Deploy to gh-pages
         run: ng deploy --base-href=/AFE/
+        working-directory: ./Web/CCMS
       
