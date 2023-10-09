@@ -32,13 +32,12 @@ jobs:
         working-directory: ./Web/CCMS
         continue-on-error: true
 
-      - name: Coverage report
-        uses: eleboys/test-coverage-report-action@v1.0.2
-        id: report
+      - name: Comment Test Coverage
+        uses: AthleticNet/comment-test-coverage@1.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           path: Web/CCMS/coverage/ccms/coverage-summary.json
-          title: Karma Test Coverage
+          title: Karma Test Coverage 2
 
       - name: Print the output summary
         run: echo "Report coverage json ${{ steps.report.outputs.summary }}"
