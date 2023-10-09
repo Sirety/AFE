@@ -5,6 +5,11 @@ on:
     branches:
       - main
 
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -71,8 +76,8 @@ jobs:
         run: npm install
         working-directory: ./Web/CCMS
 
-      - name: Install Angular gh-pages
-        run: npm run ng add angular-cli-ghpages@latest --skip-confirmation
+      - name: Install Angular gh-pages // skip-confirmation
+        run: npm run gh
         working-directory: ./Web/CCMS
       
       - name: Deploy to gh-pages
