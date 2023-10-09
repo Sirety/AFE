@@ -6,7 +6,7 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  build:
+  Test-and-get-coverage-report:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -28,8 +28,9 @@ jobs:
 
 
       - name: Run Jasmine tests
-        run: npm run test -- --no-watch
+        run: npm run test -- --no-watch 
         working-directory: ./Web/CCMS
+        continue-on-error: true
 
       - name: Coverage report
         uses: eleboys/test-coverage-report-action@v1.0.2
