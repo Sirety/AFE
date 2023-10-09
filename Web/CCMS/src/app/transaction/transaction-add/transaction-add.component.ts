@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CreditCard } from 'src/app/credit-card/model';
 import { CreditCardService } from 'src/app/services/credit-card.service';
@@ -10,9 +10,9 @@ import { Transaction } from '../model';
   templateUrl: './transaction-add.component.html',
   styleUrls: ['./transaction-add.component.scss'],
 })
-export class TransactionAddComponent {
+export class TransactionAddComponent implements OnInit {
   transactionForm = this.fb.group({
-    credit_card_number: ['', Validators.required],
+    credit_card: ['', Validators.required],
     amount: [
       '',
       [Validators.required, Validators.pattern('^[0-9]+(.[0-9]{1,2})?$')],
@@ -20,7 +20,7 @@ export class TransactionAddComponent {
     currency: ['', Validators.required],
     comment: [''],
     date: ['', Validators.required],
-    uid: ['', Validators.required],
+    uid: [''],
   });
 
   creditCards: CreditCard[] = [];
@@ -29,36 +29,48 @@ export class TransactionAddComponent {
     private fb: FormBuilder,
     private transactionService: TransactionService,
     private creditCardService: CreditCardService
-  ) {
+  ) {  }
+  
+  ngOnInit(): void {
     this.creditCardService.getCreditCards().subscribe((response) => {
       this.creditCards = response;
     });
   }
-  formToTransaction(form: FormGroup, creditCards: CreditCard[]): Transaction {
+
+  formToTransaction(form: FormGroup): Transaction {
     const transaction: Transaction = {
       credit_card:
-        creditCards.find(
+        this.creditCards.find(
           (card) => card.card_number === Number(form.get('credit_card_number'))
-        ) ?? creditCards[0],
-      amount: Number(form.get('amount')),
+        ) ?? this.creditCards[0],
+      amount: Number(form.get('amount')?.value),
       currency: form.get('currency')?.value,
       comment: form.get('comment')?.value,
       date: form.get('date')?.value,
-      uid: form.get('uid')?.value,
+      // generate a uid as a hash of the rest of the transaction
+      uid: form
+        .get('credit_card_number')
+        ?.value.concat(form.get('amount')?.value)
+        .concat(form.get('currency')?.value)
+        .concat(form.get('comment')?.value)
+        .concat(form.get('date')?.value)
+        .hashCode(),
     };
 
     return transaction;
   }
 
   onSubmit() {
+    console.log('Transaction form submitted:', this.transactionForm)
     if (this.transactionForm.valid) {
       this.transactionService
         .postTransactions(
-          this.formToTransaction(this.transactionForm, this.creditCards)
+          this.formToTransaction(this.transactionForm)
         )
         .subscribe((response) => {
           console.log('Transaction added:', response);
-          // You might want to navigate or show a success message
+          // reset form
+          this.transactionForm.reset();
         });
     }
   }
