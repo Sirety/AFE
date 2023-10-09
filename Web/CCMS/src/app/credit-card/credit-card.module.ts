@@ -24,5 +24,8 @@ import { CreditCardListComponent } from './credit-card-list/credit-card-list.com
     CreditCardAddComponent,
     TransactionListComponent,
   ],
+  exports: [
+    CreditCardListComponent
+  ]
 })
 export class CreditCardModule {}
