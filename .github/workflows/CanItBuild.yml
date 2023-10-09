@@ -1,0 +1,51 @@
+name: Can it build 🥂🍾🤷‍♀️
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout
+          uses: actions/checkout@v3
+
+        - name: See directory
+          run: |
+            ls -a
+            pwd
+
+        - name: Install Node.js
+          uses: actions/setup-node@v2
+          with:
+            node-version: "18"
+
+        - name: Install dependencies
+          run: npm install
+          working-directory: ./Web/CCMS
+
+        - name: build to prod
+          run: npm run build:prod 
+          working-directory: ./Web/CCMS
+
+    thankcreator: 
+        needs: build
+        runs-on: ubuntu-latest 
+        steps:
+        - name: Thank creator
+          uses: actions/github-script@v5
+          with:
+            github-token: ${{ secrets.GITHUB_TOKEN }}
+            script: |
+                const user = context.payload.pull_request.user.login
+                const result = await github.pulls.createReview({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.issue.number,
+                event: 'COMMENT',
+                body: 'Thank you for your contribution @' + user + ' 🥂🍾🤷‍♀️'
+                })
+                console.log(result.status)
