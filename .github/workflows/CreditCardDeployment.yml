@@ -72,7 +72,7 @@ jobs:
         working-directory: ./Web/CCMS
 
       - name: Install Angular gh-pages
-        run: npm run ng add angular-cli-ghpages@latest
+        run: npm run ng add angular-cli-ghpages@latest --skip-confirmation
         working-directory: ./Web/CCMS
       
       - name: Deploy to gh-pages
