@@ -44,7 +44,7 @@ jobs:
         run: npm install
 
       - name: build to prod
-        run: ng build  --base-href=https://Sirety.github.io/AFE/
+        run: ng build --base-href=https://Sirety.github.io/AFE/
 
       - name: deploy with james
         uses: JamesIves/github-pages-deploy-action@4.1.1
