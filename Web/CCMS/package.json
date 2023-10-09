@@ -7,7 +7,8 @@
     "build": "ng build --configuration development",
     "watch": "ng build --watch --configuration development",
     "test": "ng test --watch=false --browsers=ChromeHeadless --code-coverage",
-    "gh": "ng add angular-cli-ghpages@latest --skip-confirmation"
+    "gh": "ng add angular-cli-ghpages@latest --skip-confirmation",
+    "build:prod": "ng build --configuration production --base-href /AFE/"
   },
   "private": true,
   "dependencies": {
