@@ -6,7 +6,8 @@
     "start": "ng serve -o",
     "build": "ng build --configuration development",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test --watch=false --browsers=ChromeHeadless --code-coverage"
+    "test": "ng test --watch=false --browsers=ChromeHeadless --code-coverage",
+    "gh": "ng add angular-cli-ghpages@latest --skip-confirmation"
   },
   "private": true,
   "dependencies": {
