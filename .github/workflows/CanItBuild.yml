@@ -1,0 +1,40 @@
+name: Can it build 🥂🍾🤷‍♀️
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout
+          uses: actions/checkout@v3
+
+        - name: See directory
+          run: |
+            ls -a
+            pwd
+
+        - name: Install Node.js
+          uses: actions/setup-node@v3
+          with:
+            node-version: "18"
+
+        - name: Install dependencies
+          run: npm install
+          working-directory: ./Web/CCMS
+
+        - name: build to prod
+          run: npm run build:prod 
+          working-directory: ./Web/CCMS
+
+    thankcreator: 
+        needs: build
+        runs-on: ubuntu-latest 
+        steps:
+        - name: Thank creator
+          run : |
+            echo "Thank you for your contribution @${{ github.event.pull_request.user.login }}!"

@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'some api',
-  port: ':3000',
+  apiUrl: 'https://credit-card-server-64jfrccjja-ew.a.run.app/',
+  port: '', //no port for prod
 };

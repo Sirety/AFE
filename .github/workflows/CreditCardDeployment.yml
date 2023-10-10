@@ -9,7 +9,7 @@ on:
 
 permissions:
   contents: write
-  
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -40,7 +40,7 @@ jobs:
           pwd
 
       - name: Install Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: "18"
 
@@ -49,7 +49,7 @@ jobs:
         working-directory: ./Web/CCMS
 
       - name: build to prod
-        run: npm run ng build --base-href=https://Sirety.github.io/AFE/
+        run: npm run build:prod 
         working-directory: ./Web/CCMS
 
       - name: deploy with james
@@ -59,28 +59,4 @@ jobs:
           folder: Web/CCMS/dist/ccms
           clean: true
           token: ${{ secrets.GITHUB_TOKEN }}
-
-  deployAngular:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      
-      - name: Install Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: "18"
-        
-      
-      - name: Install dependencies
-        run: npm install
-        working-directory: ./Web/CCMS
-
-      - name: Install Angular gh-pages // skip-confirmation
-        run: npm run gh
-        working-directory: ./Web/CCMS
-      
-      - name: Deploy to gh-pages
-        run: npm run ng deploy --base-href=/AFE/
-        working-directory: ./Web/CCMS
       
