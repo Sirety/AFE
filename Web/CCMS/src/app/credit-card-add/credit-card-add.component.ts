@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { CreditCard } from '../credit-card/model';
 import { CreditCardService } from '../services/credit-card.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-credit-card-add',
@@ -31,7 +32,8 @@ export class CreditCardAddComponent {
   creditCardForm!: FormGroup;
   constructor(
     private fb: FormBuilder,
-    private creditCardService: CreditCardService
+    private creditCardService: CreditCardService,
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -108,10 +110,11 @@ export class CreditCardAddComponent {
   onSubmit() {
     console.log(this.creditCardForm.value);
     this.creditCardService
-
       .postCreditCard(this.formToCreditCard(this.creditCardForm))
       .subscribe();
+    this.location.back();
   }
+
   onAutoFill() {
     this.creditCardForm.patchValue({
       card_number: '1234567890123456',
