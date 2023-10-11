@@ -3,25 +3,20 @@
     <!-- Home Link -->
     <a class="nav-item" routerLink="/">Home</a>
 
-    <!-- About Link -->
-    <a class="nav-item" routerLink="/about">About</a>
-
     <!-- Credit Card Dropdown -->
-    <div class="nav-dropdown">
-      <button class="nav-item nav-dropdown-toggle" [routerLink]="['/creditcard']">Credit Cards</button>
-
-      <div class="nav-dropdown-menu">
-        <a class="nav-dropdown-item" routerLink="/creditcard/add">Add New</a>
-      </div>
-    </div>
+    <a class="nav-item" routerLink="/creditcard/add">Add Card</a>
 
     <!-- Transaction Dropdown -->
     <div class="nav-dropdown">
-      <button class="nav-item nav-dropdown-toggle">Transactions</button>
+      <button class="nav-item nav-dropdown-toggle" routerLink="/transaction">Transactions</button>
       <div class="nav-dropdown-menu">
-        <a class="nav-dropdown-item" routerLink="/transaction">Transaction Screen</a>
-        <a class="nav-dropdown-item" routerLink="/transaction/add">Add New Transaction</a>
+        <a class="nav-dropdown-item" routerLink="/transaction/add"
+          >Add New Transaction</a
+        >
       </div>
     </div>
+
+    <!-- About Link -->
+    <a class="nav-item" routerLink="/about">About</a>
   </div>
 </nav>
