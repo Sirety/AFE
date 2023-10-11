@@ -23,8 +23,6 @@ export class CreditCardDetailsComponent {
       );
     });
   }
-  // create a method to delete the credit card using the service and endpoint DELETE /cards/:card_number
-  // navigate to the credit card list page after the card is deleted
 
   deleteCreditCard(cardNumber: number): void {
     this.service.deleteCard(cardNumber);
