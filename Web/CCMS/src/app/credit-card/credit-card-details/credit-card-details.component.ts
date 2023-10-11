@@ -1,9 +1,9 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CreditCardService } from 'src/app/services/credit-card.service';
 import { CreditCard } from '../model';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-credit-card-details',
@@ -13,10 +13,10 @@ import { Location } from '@angular/common';
 export class CreditCardDetailsComponent {
   creditCard$: Observable<CreditCard> | null = null;
   constructor(
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
     private service: CreditCardService,
     private location: Location
-    ) {
+  ) {
     route.paramMap.subscribe((params) => {
       this.creditCard$ = service.getCreditCard(
         parseInt(params.get('card_number') || '0')
@@ -25,7 +25,7 @@ export class CreditCardDetailsComponent {
   }
 
   deleteCreditCard(cardNumber: number): void {
-    this.service.deleteCard(cardNumber);
-    this.location.back();
+    //if successful, go back to the previous page
+    this.service.deleteCard(cardNumber, this.location).subscribe();
   }
 }
