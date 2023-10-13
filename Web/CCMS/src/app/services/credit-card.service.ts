@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -61,7 +62,7 @@ export class CreditCardService {
       );
   }
 
-  deleteCard(card_number: number): Observable<CreditCard> {
+  deleteCard(card_number: number, location?: Location): Observable<CreditCard> {
     let snackref = this.snackBar.open(`Deleting card ${card_number}`, 'Close');
     return this.http
       .delete<CreditCard>(`${this.rootUrl + this.port}/cards/${card_number}`)
@@ -77,6 +78,7 @@ export class CreditCardService {
               panelClass: 'SnackbarSuccess',
             }
           );
+          location?.back();
           return card;
         }),
         catchError((e) => this.handleErrorCreditCardNumber(e, card_number))
