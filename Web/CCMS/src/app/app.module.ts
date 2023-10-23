@@ -11,6 +11,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     PageNotFoundComponent,
     HomeComponent,
     AboutComponent,
+    FooterComponent,
 
   ],
   imports: [
